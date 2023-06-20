@@ -1,4 +1,6 @@
 import logo from "./logo.svg";
+import menu from "./menu.svg";
+import close from "./close.svg";
 import logoWhite from "./logo-white.svg";
 import hero from "./hero.svg";
 import membership from "./membership.svg";
@@ -35,6 +37,8 @@ import send from "./send.svg";
 
 export {
 	logo,
+	menu,
+	close,
 	logoWhite,
 	hero,
 	membership,
