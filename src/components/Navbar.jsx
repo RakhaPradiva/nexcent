@@ -30,7 +30,7 @@ const Navbar = () => {
 					<li key={btn.id} className="font-normal text-[14px] text-center">
 						<a
 							key={btn.id}
-							href={`${btn.id}`}
+							href={`#${btn.id}`}
 							className={`px-[20px] py-[10px] ${btn.style} rounded-[6px]`}
 						>
 							{btn.title}
