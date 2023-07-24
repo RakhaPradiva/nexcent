@@ -1,38 +1,29 @@
 import { community } from "../constants";
 
-const Community = () => (
-	<section id="community" className="text-center">
-		<div className="my-5">
-			<h2 className="font-inter font-semibold text-[36px]">
-				Manage your entire community <br /> in a single system
-			</h2>
-			<p className="font-inter my-3 text-[16px] font-normal">
-				Who is Nextcent suitable for?
-			</p>
-		</div>
-		<ul className="flex flex-wrap items-center justify-evenly">
-			{community.map((community) => (
-				<li
-					key={community.id}
-					className="w-[300px] h-[260px] flex flex-col justify-center gap-[20px] items-center"
-				>
-					<img
-						src={community.icon}
-						alt="community"
-						className="object-contain"
-					/>
-					<div className="flex items-center justify-center flex-col">
-						<h3 className="font-inter my-2 font-bold text-[28px]">
-							{community.title}
-						</h3>
-						<p className="font-inter text-[16px] font-normal">
-							{community.description}
-						</p>
+const Community = () => {
+	return (
+		<section className="py-10">
+			<div className="container">
+				<div className="w-full text-center">
+					<div className="px-6 mb-10 lg:px-4">
+						<h2 className="mb-2 text-4xl font-semibold text-neutral-600">Manage your entire community in a single system</h2>
+						<p className="text-base font-normal text-neutral-500">Who is Nextcent suitable for?</p>
 					</div>
-				</li>
-			))}
-		</ul>
-	</section>
-);
+					<ul className="flex flex-wrap justify-between w-full px-12 lg:px-36">
+						{community.map((item) => (
+							<li key={item.id} className="group flex flex-col gap-2 py-6 px-8 items-center lg:max-w-[18.675rem] w-full">
+								<img src={item.icon} alt="icon" className="object-contain mx-auto" />
+								<div className="w-full">
+									<h3 className="mb-2 text-2xl font-semibold text-neutral-600">{item.title}</h3>
+									<p className="text-base text-neutral-500">{item.description}</p>
+								</div>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</section>
+	);
+};
 
 export default Community;

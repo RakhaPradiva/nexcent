@@ -1,44 +1,48 @@
 import { useState } from "react";
-
-import { logo, menu, close } from "../assets";
-import { navLinks, navButtons } from "../constants";
+import { navButtons, navLinks } from "../constants";
+import { menu, close } from "../assets";
+import { Button } from "../components";
 
 const Navbar = () => {
-	const [toggle, setToggle] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const handleToggle = () => {
-		setToggle(!toggle);
+	const handleMenu = () => {
+		setIsMenuOpen(!isMenuOpen);
 	};
 
 	return (
-		<nav className="flex items-center justify-between w-full h-full">
-			<div className="w-[150px] h-[24px]">
-				<img src={logo} alt="logo" className="w-full h-full" />
-			</div>
-			<ul className="flex items-center justify-center gap-[50px]">
-				{navLinks.map((link) => (
-					<li key={link.id} className="font-normal text-[16px] text-center">
-						<a key={link.id} href={`#${link.id}`}>
-							{link.title}
-						</a>
-					</li>
-				))}
-			</ul>
+		<>
+			<button className="block px-4 lg:hidden" onClick={handleMenu}>
+				<img src={isMenuOpen ? close : menu} alt="menu" className="w-6 h-8" />
+			</button>
 
-			<ul className="flex items-center justify-center gap-[10px]">
-				{navButtons.map((btn) => (
-					<li key={btn.id} className="font-normal text-[14px] text-center">
-						<a
-							key={btn.id}
-							href={`#${btn.id}`}
-							className={`px-[20px] py-[10px] ${btn.style} rounded-[6px]`}
-						>
-							{btn.title}
-						</a>
-					</li>
-				))}
-			</ul>
-		</nav>
+			<nav
+				className={`${
+					isMenuOpen ? "flex" : "hidden"
+				} absolute top-20 right-6 z-10 py-4 items-center flex-col max-w-[17.5rem] w-full shadow-md rounded-lg gap-6 lg:flex lg:flex-row lg:max-w-full bg-slate-50 lg:gap-20 lg:shadow-none lg:static`}
+			>
+				<ul className="flex flex-col items-center gap-6 lg:flex-row lg:gap-12">
+					{navLinks.map((link) => (
+						<li key={link.id} className="group">
+							<a href={`#${link.id}`} className="text-base font-normal leading-normal transition-colors duration-300 ease-in-out text-zinc-900 group-hover:text-zinc-600">
+								{link.title}
+							</a>
+						</li>
+					))}
+				</ul>
+				<ul className="flex items-center gap-3 lg:flex-row">
+					{navButtons.map((button) => (
+						<li key={button.id} className="group">
+							<Button
+								text={button.title}
+								style={`${button.style} px-5 py-3  group-hover:opacity-80 transition-opacity duration-300 ease-in-out lg:px-2.5 lg:py1.5 lg:text-sm`}
+								link={`#${button.id}`}
+							/>
+						</li>
+					))}
+				</ul>
+			</nav>
+		</>
 	);
 };
 

@@ -1,49 +1,38 @@
 import { customers } from "../constants";
 import { mainCustomer } from "../assets";
+import { Button } from "../components";
 
-const Customer = () => (
-	<section
-		id="customer"
-		className="flex justify-between px-36 py-8 bg-slate-100"
-	>
-		<div className="w-[326px] h-[326px] flex justify-center items-center">
-			<img src={mainCustomer} alt="main customer" className="object-contain" />
-		</div>
-		<div className="w-[750px] h-[325px]">
-			<p className="font-inter font-normal text-[16px]">
-				Maecenas dignissim justo eget nulla rutrum molestie. Maecenas lobortis
-				sem dui, vel rutrum risus tincidunt ullamcorper. Proin eu enim metus.
-				Vivamus sed libero ornare, tristique quam in, gravida enim. Nullam ut
-				molestie arcu, at hendrerit elit. Morbi laoreet elit at ligula molestie,
-				nec molestie mi blandit. Suspendisse cursus tellus sed augue ultrices,
-				quis tristique nulla sodales. Suspendisse eget lorem eu turpis
-				vestibulum pretium. Suspendisse potenti. Quisque malesuada enim sapien,
-				vitae placerat ante feugiat eget. Quisque vulputate odio neque, eget
-				efficitur libero condimentum id. Curabitur id nibh id sem dignissim
-				finibus ac sit amet magna.
-			</p>
-			<h3 className="font-inter mt-4 mb-2 font-semibold text-[20px] text-green-600">
-				Tim Smith
-			</h3>
-			<p className="font-inter font-light text-[16px]">
-				British Dragon Boat Racing Association
-			</p>
-			<ul className="flex gap-10 w-full items-center h-[50px] mt-4">
-				{customers.map((customer) => (
-					<li key={customer.id} className="flex items-center">
-						<img
-							src={customer.logo}
-							alt={customer.id}
-							className="w-[50px] h-[50px] object-contain"
-						/>
-					</li>
-				))}
-				<button className="font-inter font-semibold text-green-600 text-[20px]">
-					Meet all customers <span>&#8594;</span>
-				</button>
-			</ul>
-		</div>
-	</section>
-);
+const Customer = () => {
+	return (
+		<section id="customer" className="px-12 py-10 lg:px-32">
+			<div className="container">
+				<div className="flex flex-wrap justify-between w-full">
+					<div className="w-full lg:w-1/4 ">
+						<img src={mainCustomer} alt="customer" className="object-contain w-full mx-auto" />
+					</div>
+					<div className="w-full lg:w-3/4 lg:pl-20">
+						<p className="text-base font-medium text-neutral-500">
+							Maecenas dignissim justo eget nulla rutrum molestie. Maecenas lobortis sem dui, vel rutrum risus tincidunt ullamcorper. Proin eu enim metus. Vivamus sed libero
+							ornare, tristique quam in, gravida enim. Nullam ut molestie arcu, at hendrerit elit. Morbi laoreet elit at ligula molestie, nec molestie mi blandit. Suspendisse
+							cursus tellus sed augue ultrices, quis tristique nulla sodales. Suspendisse eget lorem eu turpis vestibulum pretium. Suspendisse potenti. Quisque malesuada enim
+							sapien, vitae placerat ante feugiat eget. Quisque vulputate odio neque, eget efficitur libero condimentum id. Curabitur id nibh id sem dignissim finibus ac sit amet
+							magna.
+						</p>
+						<h3 className="my-4 text-xl font-semibold text-green-500">Tim Smith</h3>
+						<p className="mb-5 text-base font-normal text-gray-400">British Dragon Boat Racing Association</p>
+						<div className="flex items-center">
+							<div className="flex flex-wrap items-center justify-center w-full gap-10 lg:justify-start">
+								{customers.map((customer) => (
+									<img src={customer.logo} alt={customer.id} className="object-contain w-12 my-2" key={customer.id} />
+								))}
+								<Button text="Meet All Customer →" style="text-green-500 text-xl font-semibold py-3 px-5" link="#" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
+};
 
 export default Customer;

@@ -2,16 +2,21 @@
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		extend: {
-			colors: {},
-			fontFamily: { inter: ["Inter", "sans-serif"] },
+		container: {
+			center: true,
+			padding: "1rem",
 		},
 		screens: {
-			"max-sm": { max: "480px" },
-			"max-md": { max: "768px" },
-			"max-lg": { max: "976px" },
-			"max-xl": { max: "1440px" },
+			sm: "576px",
+			md: "768px",
+			lg: "1024px",
+			xl: "1400px",
 		},
+
+		fontFamily: {
+			inter: ["Inter", "sans-serif"],
+		},
+		extend: {},
 	},
 	plugins: [],
 };

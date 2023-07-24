@@ -1,45 +1,34 @@
 import { blogs } from "../constants";
+import { Button } from "../components";
 
-const Blog = () => (
-	<section
-		id="blog"
-		className="w-fullmax-h-[560px] flex flex-col items-center gap-4"
-	>
-		<div className="max-w-[570px] text-center">
-			<h2 className="font-inter text-[36px] font-semibold">
-				Caring is the new marketing
-			</h2>
-			<p className="font-inter text-[16px] font-normal">
-				The Nexcent blog is the best place to read about the latest membership
-				insights, trends and more. See who's joining the community, read about
-				how our community are increasing their membership income and lot's
-				more.​
-			</p>
-		</div>
-
-		<ul className="px-36 flex justify-between flex-wrap items-center gap-5">
-			{blogs.map((blog) => (
-				<li
-					key={blog.id}
-					className="w-[370px] h-[365px] flex flex-col justify-center items-center bg-sky-500 relative rounded-[8px]"
-				>
-					<img
-						src={blog.thumbnail}
-						alt={blog.id}
-						className="w-full h-full object-cover absolute top-0 left-0 rounded-[8px]"
-					/>
-					<div className="absolute bg-white text-center flex flex-col gap-4 justify-center z-[3] -bottom-16 w-full max-w-[320px] h-[175px] shadow-xl rounded-[8px] px-5">
-						<h3 className="font-inter text-[20px] text-slate-600 font-semibold">
-							{blog.title}
-						</h3>
-						<button className="font-inter  text-green-600 text-[16px] font-semibold px-4 py-2">
-							{blog.action + " " + "→"}
-						</button>
+const Blog = () => {
+	return (
+		<section className="px-12 py-10 mb-16 lg:px-32" id="blog">
+			<div className="container">
+				<div className="w-full">
+					<div className="px-4 mb-5 text-center">
+						<h2 className="mb-3 text-4xl font-semibold text-neutral-600">Caring is the new marketing</h2>
+						<p className="text-base font-normal text-neutral-500">
+							The Nexcent blog is the best place to read about the latest membership insights, trends and more. See who &apos;s joining the community, read about how our community
+							are increasing their membership income and lot &apos;s more.
+						</p>
 					</div>
-				</li>
-			))}
-		</ul>
-	</section>
-);
+
+					<ul className="flex flex-wrap justify-center w-full gap-20 lg:gap-16 xl:gap-0 lg:justify-evenly">
+						{blogs.map((blog) => (
+							<li key={blog.id} className="rounded-sm max-w-[23rem] w-full relative">
+								<img src={blog.thumbnail} alt={blog.title} className="object-contain rounded-sm" />
+								<div className="absolute z-10 p-4 mx-5 text-center rounded-md shadow-md bg-slate-50 -bottom-14 lg:-bottom-10 ">
+									<h3 className="mb-4 text-base font-semibold text-neutral-500 lg:text-xl">{blog.title}</h3>
+									<Button text={blog.action} style="text-green-500 text-base lg:text-xl font-semibold" link="#" />
+								</div>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</section>
+	);
+};
 
 export default Blog;
